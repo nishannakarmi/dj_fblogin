@@ -136,8 +136,6 @@ SOCIALACCOUNT_PROVIDERS = {
         'METHOD': 'oauth2',
         'SCOPE': ['email', 'public_profile', 'user_friends'],
         'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-        'CLIENT_ID': '335109983800913',
-        'SECRET_KEY': '3052e2cbe5c239c04f0751b8bb56adea',
         'FIELDS': [
             'id',
             'email',

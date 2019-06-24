@@ -1,0 +1,35 @@
+{% load socialaccount %}
+{% providers_media_js %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+{% if is_authenticated and is_active %}
+<a href="#" onclick="logout()">Logout</a>
+<br>
+<div>User {{ first_name }} {{ last_name }} logged in with facebook.</div>
+<br>
+<div><img src="{{ profile_picture }}"></div>
+{% elif is_authenticated and not is_active %}
+<div>You logged in logged, because you have an active session.</div>
+<div>But you removed your fb application you don't have grant access anymore!</div>
+{% else %}
+<a href="{% provider_login_url "facebook" method="js_sdk" %}">Login With Facebook</a>
+{% endif %}
+</body>
+<script>
+
+    function logout() {
+        // TODO i got FB.logout() called without an access token, and wasted
+        // TODO so much time to resolve it, just give up and call
+        // TODO logout url manually
+        console.log('An error occured. Trying to logout manually.');
+        // allauth.facebook.logout();
+        window.location = "{% url 'account_logout' %}";
+    }
+
+</script>
+</html>
